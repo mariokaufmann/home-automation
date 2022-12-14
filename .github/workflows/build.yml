@@ -9,7 +9,7 @@ jobs:
           - label: ubuntu-latest
             script: chmod +x ./package.sh && ./package.sh linux
             artifact: home-automation-linux
-            dependencies: apt-get install libusb-dev -y
+            dependencies: sudo apt-get install -y libusb-dev
           - label: macos-latest
             script: chmod +x ./package.sh && ./package.sh macos
             artifact: home-automation-macos
