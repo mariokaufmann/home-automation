@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:base",
+    "group:allNonMajor",
+    "group:recommended",
+    "schedule:monthly"
+  ],
+  "packageRules": [
+  ]
+}
