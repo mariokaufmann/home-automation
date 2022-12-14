@@ -1,0 +1,59 @@
+name: build
+on: [ push ]
+jobs:
+  build:
+    strategy:
+      matrix:
+        label: [ ubuntu-latest, windows-latest, macos-latest ]
+        include:
+          - label: ubuntu-latest
+            script: chmod +x ./package.sh && ./package.sh linux
+            artifact: home-automation-linux
+          - label: macos-latest
+            script: chmod +x ./package.sh && ./package.sh macos
+            artifact: home-automation-macos
+          - label: windows-latest
+            script: .\package.ps1
+            artifact: home-automation-windows
+    runs-on: [ '${{ matrix.label }}' ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Check formatting
+        run: |
+          rustup component add rustfmt
+          cargo fmt --quiet -- --check
+      - name: Lint and test
+        run: |
+          rustup component add clippy
+          cargo clippy -- -D warnings
+          cargo test
+      - name: Build
+        run: cargo build --release
+      - name: Package
+        run: ${{ matrix.script }}
+        working-directory: ./package
+      - name: Upload artifact
+        if: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.artifact }}
+          path: package/${{ matrix.artifact }}.zip
+  release:
+    runs-on: [ ubuntu-latest ]
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: release/
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

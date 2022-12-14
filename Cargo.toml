@@ -1,0 +1,8 @@
+[workspace]
+
+members = [
+    "common",
+    "client/lib",
+    "client/streamdeck",
+    "server",
+]
