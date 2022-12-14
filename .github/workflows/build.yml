@@ -9,12 +9,15 @@ jobs:
           - label: ubuntu-latest
             script: chmod +x ./package.sh && ./package.sh linux
             artifact: home-automation-linux
+            dependencies: apt-get install libusb-dev -y
           - label: macos-latest
             script: chmod +x ./package.sh && ./package.sh macos
             artifact: home-automation-macos
+            dependencies: echo "nothing to install"
           - label: windows-latest
             script: .\package.ps1
             artifact: home-automation-windows
+            dependencies: echo "nothing to install"
     runs-on: [ '${{ matrix.label }}' ]
     steps:
       - uses: actions/checkout@v3
@@ -22,6 +25,8 @@ jobs:
         with:
           node-version: '18'
       - uses: dtolnay/rust-toolchain@stable
+      - name: Install dependencies
+        run: ${{ matrix.dependencies }}
       - name: Check formatting
         run: |
           rustup component add rustfmt
