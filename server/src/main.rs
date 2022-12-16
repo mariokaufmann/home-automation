@@ -69,7 +69,7 @@ async fn main() {
 
     // routes (matched from bottom to top from more specific to less specific)
     let router = Router::new()
-        .fallback(
+        .fallback_service(
             axum::routing::get_service(tower_http::services::ServeDir::new("static")).handle_error(
                 |err| async move { error!("error occurred when serving static file: {}.", err) },
             ),

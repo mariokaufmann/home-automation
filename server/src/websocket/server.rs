@@ -303,7 +303,6 @@ mod tests {
     use home_automation_common::automacro::AutomationMacro;
     use home_automation_common::websocket::convert::convert_message_to_text;
     use tokio::sync::mpsc::UnboundedReceiver;
-    use tokio::sync::oneshot::Receiver;
 
     use crate::websocket::server;
 
