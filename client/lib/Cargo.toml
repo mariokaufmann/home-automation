@@ -7,8 +7,8 @@ edition = "2021"
 anyhow = "1.0"
 futures-util = "0.3"
 log = "0.4"
-tokio = { version = "1.21", features = ["rt", "macros", "sync", "time"] }
-tokio-tungstenite = { version = "0.17", features = ["connect", "stream"] }
+tokio = { version = "1.23", features = ["rt", "macros", "sync", "time"] }
+tokio-tungstenite = { version = "0.18", features = ["connect", "stream"] }
 home-automation-common = { path = "../../common" }
 
 [dependencies.log4rs]

@@ -39,7 +39,7 @@ impl StreamdeckClient {
     pub fn set_button_text(&mut self, index: u8, text: &str) -> anyhow::Result<()> {
         self.device
             .set_button_text(
-                index as u8,
+                index,
                 &self.font,
                 &TextPosition::Absolute { x: 5, y: 5 },
                 text,
