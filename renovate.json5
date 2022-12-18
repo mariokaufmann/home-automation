@@ -6,5 +6,10 @@
     "schedule:monthly"
   ],
   "packageRules": [
+    // we cannot update to v2 yet as long as streamdeck-rs still uses 1.x
+    {
+      matchPackageNames: ["hidapi"],
+      allowedVersions: "<2.0.0"
+    }
   ]
 }
