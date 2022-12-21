@@ -17,6 +17,7 @@ use tokio::sync::mpsc::UnboundedSender;
 
 mod config;
 mod dto;
+mod routes;
 
 pub struct PhilipsHueAutomationModule {
     request_sender: UnboundedSender<ConfigureHuePayload>,
@@ -166,7 +167,10 @@ impl AutomationModule for PhilipsHueAutomationModule {
     }
 
     fn get_routes(&self) -> Option<Router> {
-        None
+        axum::Router::nest            "/philipshue",
+        Router::new()
+            .route("/light", axum::routing::put()
+        )
     }
 
     fn handle_action(&mut self, automation_action: &AutomationAction) -> anyhow::Result<bool> {

@@ -11,4 +11,5 @@ pub mod automodule;
 pub mod config;
 pub mod fs;
 pub mod test;
+pub mod types;
 pub mod websocket;
