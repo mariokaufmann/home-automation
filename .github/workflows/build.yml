@@ -36,6 +36,12 @@ jobs:
           rustup component add clippy
           cargo clippy -- -D warnings
           cargo test
+      - name: Lint and build UI
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+        working-diretory: ./server/ui
       - name: Build
         run: cargo build --release
       - name: Package

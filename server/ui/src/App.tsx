@@ -1,17 +1,15 @@
-import type { Component } from 'solid-js';
-import styles from './App.module.css';
-import Card from './components/card/Card';
-import HueCard from './components/hue/hue-card/HueCard';
+import type { Component } from "solid-js";
+import styles from "./App.module.css";
+import Card from "./components/card/Card";
+import HueCard from "./components/hue/hue-card/HueCard";
 
 const App: Component = () => {
   return (
     <div class={styles.App}>
-      <header class={styles.header}>
-      </header>
+      <header class={styles.header}></header>
       <div class={styles.gridWrapper}>
         <div class={styles.one}>
-          <Card>
-          </Card>
+          <Card></Card>
         </div>
         <div class={styles.two}>
           <Card>

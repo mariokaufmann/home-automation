@@ -1,13 +1,12 @@
 .HueCard {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .HueCard > h2 {
-    line-height: 24px;
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .HueCard > h2 + * {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }

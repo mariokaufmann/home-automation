@@ -1,7 +1,7 @@
 use crate::automodule::philipshue::api::ConfigureHueGroupedLightRequest;
 use crate::automodule::philipshue::config::PhilipsHueAutomationModuleConfiguration;
 use axum::extract::State;
-use axum::{extract, Json};
+use axum::Json;
 use hyper::StatusCode;
 use std::sync::Arc;
 use tokio::sync::mpsc::UnboundedSender;
