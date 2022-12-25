@@ -33,7 +33,6 @@ pub struct PhilipsHuePresetDto {
     color_temperature: u16,
 }
 
-#[axum_macros::debug_handler]
 pub async fn get_groups(State(state): State<HueState>) -> Json<Vec<PhilipsHueGroupDto>> {
     Json(
         state
@@ -48,7 +47,6 @@ pub async fn get_groups(State(state): State<HueState>) -> Json<Vec<PhilipsHueGro
     )
 }
 
-#[axum_macros::debug_handler]
 pub async fn get_presets(State(state): State<HueState>) -> Json<Vec<PhilipsHuePresetDto>> {
     Json(
         state
@@ -65,7 +63,6 @@ pub async fn get_presets(State(state): State<HueState>) -> Json<Vec<PhilipsHuePr
     )
 }
 
-#[axum_macros::debug_handler]
 pub async fn configure_group(
     State(state): State<HueState>,
     Json(dto): Json<PhilipsHueConfigureGroupDto>,
