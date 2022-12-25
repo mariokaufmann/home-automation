@@ -6,4 +6,3 @@ pub fn export_type<T: TS>() {
     let path = Path::new("../ts-types").join(file_name);
     T::export_to(path).unwrap()
 }
-}

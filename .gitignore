@@ -4,3 +4,4 @@ target/
 *.dll
 *.lib
 !lib/*
+ts-types

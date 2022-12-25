@@ -14,6 +14,7 @@ chrono = "0.4.23"
 log = "0.4.17"
 futures = "0.3.25"
 hyper = { version = "0.14.23", features = ["client"] }
+hyper-tls = "0.5.0"
 serde = "1.0.150"
 serde_derive = "1.0.150"
 serde_json = "1.0.89"

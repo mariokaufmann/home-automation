@@ -88,14 +88,16 @@ async fn main() {
     )
     .await;
 
-    let addr = SocketAddr::from(([0, 0, 0, 0], 8091));
+    let port = 8091;
+    info!("Starting home automation server on port {}.", port);
+    let addr = SocketAddr::from(([0, 0, 0, 0], port));
     axum_server::bind(addr)
         .serve(router.into_make_service())
         .await
         .unwrap();
 }
 
-fn get_logging_level(args: &[String]) -> log::LevelFilter {
+fn get_logging_level(args: &[String]) -> LevelFilter {
     match args.get(1) {
         Some(arg) => match arg.as_str() {
             "--debug" => LevelFilter::Debug,
