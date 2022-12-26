@@ -1,0 +1,10 @@
+.Card {
+  padding: 16px;
+  background: #c1c1c1;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 24px;
+}

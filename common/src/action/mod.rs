@@ -6,8 +6,6 @@ pub enum AutomationAction {
     PlaySound,
     /* Can be sent to instruct the server to reload a certain streamdeck's configuration and send it to the connected streamdeck. */
     StreamdeckClientReloadDeviceConfiguration,
-    HueConfigureLight { id: u32, on: bool },
-    HueConfigureGroup { id: u32, on: bool },
 }
 
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Eq)]
