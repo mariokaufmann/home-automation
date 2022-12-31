@@ -22,8 +22,6 @@ pub struct PhilipsHueAutomationModule {
     api_client: ApiClient,
 }
 
-impl PhilipsHueAutomationModule {}
-
 impl AutomationModule for PhilipsHueAutomationModule {
     fn new(
         application_folder: &Path,

@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import styles from "./App.module.css";
 import Card from "./components/card/Card";
 import HueCard from "./components/hue/hue-card/HueCard";
+import SpotifyCard from "./components/spotify/spotify-card/SpotifyCard";
 
 const App: Component = () => {
   return (
@@ -9,7 +10,9 @@ const App: Component = () => {
       <header class={styles.header}></header>
       <div class={styles.gridWrapper}>
         <div class={styles.one}>
-          <Card></Card>
+        <Card>
+            <SpotifyCard></SpotifyCard>
+          </Card>
         </div>
         <div class={styles.two}>
           <Card>

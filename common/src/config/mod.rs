@@ -45,6 +45,10 @@ where
         &self.configuration
     }
 
+    pub fn get_configuration_mut(&mut self) -> &mut T {
+        &mut self.configuration
+    }
+
     pub fn reload_configuration(&mut self) -> anyhow::Result<()> {
         let configuration = Self::load_configuration(&self.configuration_loader)?;
         self.configuration = configuration;

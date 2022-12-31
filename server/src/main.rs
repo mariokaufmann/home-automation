@@ -13,6 +13,7 @@ use axum::Router;
 use log::LevelFilter;
 
 use crate::automodule::philipshue::PhilipsHueAutomationModule;
+use crate::automodule::spotify::SpotifyAutomationModule;
 use crate::automodule::streamdeck::StreamdeckAutomationModule;
 use crate::automodule::{AutomationModule, CompositeAutomationModule};
 use crate::services::ServicesContext;
@@ -48,6 +49,12 @@ async fn main() {
         PhilipsHueAutomationModule::new(&application_folder, status_update_tx.clone())
             .unwrap_or_else(|err| panic!("Could not load Philips Hue module: {}.", err));
     composite_module.add_module(Box::new(philips_hue_module));
+
+    // spotify
+    let spotify_module =
+        SpotifyAutomationModule::new(&application_folder, status_update_tx.clone())
+            .unwrap_or_else(|err| panic!("Could not load spotify module: {}.", err));
+    composite_module.add_module(Box::new(spotify_module));
 
     // Streamdeck module
     let streamdeck_module =

@@ -7,6 +7,7 @@ use tokio::sync::mpsc::UnboundedSender;
 use crate::websocket::dto::AutomationServerStatusUpdate;
 
 pub mod philipshue;
+pub mod spotify;
 pub mod streamdeck;
 
 pub trait AutomationModule {
